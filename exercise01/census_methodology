@@ -1,0 +1,24 @@
+RTI Exercise01
+
+Summary
+I created a decision tree and a logistic regression model to analyze census records and identify factors that are predictive of individuals earning an income of more than $50,000 per year.  
+
+Results
+The decision tree had splits on capital_gain, education and relationship.  
+The logistic regression identified the following variables as significant predictors: 
+Age; Workclass: local-gov, private, emp-not-inc, state-gov; Marital-status: married-AF-spouse, Married-civ-spouse, Never-married; Race: white; Gender: M; Hours_week; Occupation: exec-managerial, farming-fishing, handlers-cleaners, machine-op-inspct, other-service, Prof-specialty, Protective-serv, sales, tech_support; Relationship: wife
+
+Methodology
+First I created view in the database to combine the normalized tables and flatten the dataset, then I explored the data and postured it for analysis.  
+•	Tests of association revealed an association between categorical variables and the income predicator variable.  
+•	Collapsed workclass levels Never-worked into without pay 
+•	Education Num is an ordinal variable equivalent to education level variable  
+The decision tree was pruned to minimize the complexity parameter.
+Captial_gain was dropped from the logistic regression, in order to avoid quasi-complete separation.
+I split the data into 70% training and 30% validation, then built the models on the training data and scored them on the validation data.  I assessed model accuracy by comparing the area under the ROC curves for each of the models.  
+	Area under ROC curve
+Decision tree: 	0.84
+Logistic regression: 	0.89
+
+
+Source code and charts: census.R
